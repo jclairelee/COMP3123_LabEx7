@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import Info from "./components/Info";
+import "./App.css";
 
-function App() {
+export default function App() {
+  // Use state, then pass to child as props (meets “state or props” requirement)
+  const [student] = useState({
+    courseTitle: "Fullstack Development - I",
+    labTitle: "React JS Programming Week09 Lab exercise",
+    studentId: "100882058",
+    name: "Claire Lee",
+    college: "George Brown College, Toronto",
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="wrap">
+      <img src={logo} alt="React logo" className="react-logo" />
+      <h1>Welcome to {student.courseTitle}</h1>
+      <h2>{student.labTitle}</h2>
+      <Info {...student} />
+    </main>
   );
 }
-
-export default App;
